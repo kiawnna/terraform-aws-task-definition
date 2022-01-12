@@ -16,5 +16,7 @@ variable "task_execution_role_arn" {
 variable "container_definitions" {
   type = string
 }
-
-
+variable "network_mode" {
+  type = string
+  default = "awsvpc"
+}

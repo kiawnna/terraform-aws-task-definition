@@ -4,6 +4,7 @@ resource "aws_ecs_task_definition" "ecs-task-definition" {
   family             = "${var.app_name}-${var.environment}-task-def"
   task_role_arn      = var.task_role_arn
   execution_role_arn = var.task_execution_role_arn
+  network_mode             = var.network_mode
 
 // dynamic "volume" {
 //  for_each = var.volumes == [] ? null : var.volumes
@@ -31,6 +32,7 @@ resource "aws_ecs_task_definition" "ecs-task-definition" {
   tags = {
     Name = "${var.app_name}-${var.environment}-task-def"
     Deployment_Method = "terraform"
+    Environment = var.environment
   }
 
   container_definitions = var.container_definitions
